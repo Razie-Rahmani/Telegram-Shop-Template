@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Shop</title>
+    <meta name="description" content="Telegram Mini App shop">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <!--
+      Everything shop-specific lives here, not in app.js or style.css.
+      Editing a new shop's identity/config is a one-block edit, no code
+      required elsewhere.
+    -->
+    <script>
+        window.SHOP_CONFIG = {
+            apiBase: "https://your-backend-url.example.com",
+            shopName: "Shop",
+            currencyLabel: "USD",
+            paymentCardNumber: "0000-0000-0000-0000",
+            paymentCardHolder: "Your Name"
+        };
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+                <path d="M3 6h18"></path>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span id="shop-name-label">Shop</span>
+        </h1>
+        <button id="view-cart-btn" type="button" aria-label="View cart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <span id="cart-count" class="cart-badge" hidden>0</span>
+        </button>
+    </header>
+
+    <main id="catalog-section" aria-live="polite" aria-busy="true">
+        <div class="loading-state">
+            <span class="spinner" aria-hidden="true"></span>
+            <p>Loading products...</p>
+        </div>
+    </main>
+
+    <section id="cart-section" hidden aria-live="polite">
+        <!-- cart + checkout contents rendered by app.js -->
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
