@@ -2,8 +2,7 @@
 Postgres connection, schema, and every query in the app.
 
 Both api/ (REST) and bot/ (aiogram admin flows) call into this module
-directly rather than one importing from the other — avoids the circular
-import Bloomika's main.py sidestepped only by having everything in one file.
+directly rather than one importing from the other — avoids circular import.
 """
 
 import psycopg2
@@ -13,8 +12,6 @@ import json
 from .config import DATABASE_URL
 
 # --- Order status values ---
-# Bloomika used "pending payment" (space) alongside "pending_confirmation"
-# (underscore) — a known inconsistency flagged as a trap for future
 # `WHERE status = ...` queries. Template uses underscores throughout.
 STATUS_PENDING_PAYMENT = "pending_payment"
 STATUS_PENDING_CONFIRMATION = "pending_confirmation"
@@ -301,8 +298,6 @@ def get_contact_info():
 
 
 def update_contact_info(content: str):
-    """Not present in Bloomika's shipped code (README describes it, code
-    didn't implement it) — added here for parity with FAQ editing."""
     conn = get_connection()
     cur = conn.cursor()
     cur.execute("SELECT id FROM contact_info ORDER BY id LIMIT 1")

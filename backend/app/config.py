@@ -36,7 +36,6 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 ADMIN_API_TOKEN = os.getenv("ADMIN_API_TOKEN")
 
 # --- Shop identity ---
-# Bloomika hardcoded these (name in bot text, frontend URL in WebAppInfo).
 # Template pulls both out so a new shop is a .env edit, not a code edit.
 SHOP_NAME = os.getenv("SHOP_NAME", "My Shop")
 SHOP_FRONTEND_URL = os.getenv("SHOP_FRONTEND_URL")

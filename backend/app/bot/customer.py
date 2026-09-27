@@ -2,7 +2,7 @@
 Customer-facing bot handlers.
 
 /start branches into either the customer welcome menu or the admin panel
-based on ADMIN_ID — same as Bloomika. The admin branch here just shows the
+based on ADMIN_ID. The admin branch here just shows the
 keyboard; the actual admin flows live in admin.py.
 """
 from io import BytesIO

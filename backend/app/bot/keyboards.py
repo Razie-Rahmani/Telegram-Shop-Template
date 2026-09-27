@@ -1,10 +1,5 @@
 """
 Every InlineKeyboardMarkup the bot sends, in one place.
-
-Bloomika built these inline at each call site, often repeating the same
-button shape (Confirm/Reject, a Back button) across multiple handlers.
-Centralizing them here means a button's text or callback_data only needs
-to change in one place.
 """
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 
@@ -32,9 +27,7 @@ def customer_main_menu_keyboard() -> InlineKeyboardMarkup:
 
 def faq_menu_keyboard(faqs: list[dict]) -> InlineKeyboardMarkup:
     """Built from whatever's actually in the faq table, so a new/renamed FAQ
-    entry shows up here automatically. Bloomika's customer-facing FAQ menu
-    was a hardcoded 3-button list that could drift from the FAQ table the
-    admin panel actually edits — this keeps the two in sync by construction."""
+    entry shows up here automatically."""
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text=f["question"], callback_data=f["key"])]
         for f in faqs

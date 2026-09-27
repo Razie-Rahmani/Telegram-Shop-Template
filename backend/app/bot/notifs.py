@@ -3,7 +3,7 @@ Order-status customer notifications, and the single choke point for
 "change status + notify" — shared by api/orders.py's PATCH endpoint and
 bot/admin.py's confirm/reject/deliver buttons, so there's one place
 responsible for messaging the customer regardless of which path triggered
-the change (same guarantee Bloomika had with one function serving both).
+the change.
 """
 import json
 
@@ -14,8 +14,7 @@ from ..config import ADMIN_ID
 from .setup import bot
 
 # All customer-facing text lives here — one file to translate/edit, instead
-# of strings scattered across handlers (Bloomika had these inline in Farsi
-# throughout main.py).
+# of strings scattered across handlers.
 STATUS_MESSAGES = {
     db.STATUS_PENDING_PAYMENT: "Your order has been placed and is awaiting payment.",
     db.STATUS_PENDING_CONFIRMATION: "Your payment receipt was received and is being reviewed.",
